@@ -1,0 +1,34 @@
+<div class="container">
+  <p>{{idSchool}}</p>
+  @if(!carregaEscola().length){
+
+    <app-input-add-class
+    [inputListItems]="carregaEscola()"
+    [idSchool]="idSchool"
+    (outpuListAddItem)="getInputAndAddItem($event)"
+    />
+
+
+}@else{
+  <app-input-add-class
+    [inputListItems]="carregaEscola()"
+    [idSchool]="idSchool"
+    (outpuListAddItem)="getInputAndAddItem($event)"
+    />
+  <main class="container">
+    <app-input-list-class
+    [inputListItems]="carregaEscola()"
+    (outputDeletItemText)="deletItemText($event)"
+
+    />
+  </main>
+}
+</div>
+<footer>
+  <button class="btn btn-danger"
+  (click)="deleteAllItems()"
+  >
+    Deletar todas as Turmas
+
+  </button>
+</footer>

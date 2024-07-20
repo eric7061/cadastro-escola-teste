@@ -1,0 +1,32 @@
+@for(item of inputListItems; track item ){
+  <label class="input-label-text" [for]="item.id">
+   <!-- <input type="checkbox" #inputCheckbox
+    [checked]="item.checked"
+    (input)="goToLogin()"
+    alt="CadastrarClasses"
+    > -->
+    <button
+     class="btn btn-primary-circle"
+     title="Cadastrar Turmas"
+     (click)="goToLogin(item.id)"
+     >
+
+     </button>
+   <input type="text"
+   #inpuValue
+    [id]="item.id"
+    [value]="item.value"
+     placeholder="Adicone um valor"
+     autofocus
+     (input)="updateItemText(item.id,inpuValue.value)"
+     >
+     <button
+     class="btn btn-danger-circle"
+     title="Delete este item"
+     (click)="deleteItemText(item.id)"
+     >
+
+     </button>
+
+  </label>
+}

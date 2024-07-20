@@ -1,0 +1,33 @@
+<header  [ngClass]="{
+  'has-items' :  !getListItems.length
+}">
+@if(!getListItems.length){
+  <h1>Lista de Turmas</h1>
+}
+<div
+[ngClass]="{
+  'remove-margin-bottom' : getListItems.length
+}"
+>
+  <label class="input-label-text" for="inpuValue"
+  [ngClass]="{
+    'remove-margin-bottom' : getListItems.length
+}"
+  >
+      <input
+       type="text"
+       placeholder="Adicione uma turma"
+       id="inpuValue"
+       autofocus
+       #inputText
+       (keyup.enter)="focusAndAddClass(inputText.value)"
+      >
+      <button
+        class="btn btn-primary-circle"
+        title="Adionar um nova turma"
+        (click)="focusAndAddClass(inputText.value)"
+        >
+</button>
+  </label>
+</div>
+</header>

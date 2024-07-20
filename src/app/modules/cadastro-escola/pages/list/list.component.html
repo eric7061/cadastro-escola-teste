@@ -1,0 +1,47 @@
+@if(!getListItems().length){
+
+<div class="container">
+  <img
+    src="https://w7.pngwing.com/pngs/645/931/png-transparent-check-list-todo-list-thumbnail.png"
+    alt="sua lista esta vazia"
+    width="150"
+    loading="eager"
+  />
+
+  @if(addItem()){
+  <button class="btn btn-primary" (click)="addItem.set(false)">
+    Crie uma lista de Escolas
+  </button>
+  }@else{
+  <app-input-add-item
+    [inputListItems]="getListItems()"
+    (outpuListAddItem)="getInputAndAddItem($event)"
+  />
+
+  }
+</div>
+}@else{
+<app-input-add-item
+  [inputListItems]="getListItems()"
+  (outpuListAddItem)="getInputAndAddItem($event)"
+/>
+<main class="container">
+  @if(listItemStage().length){
+
+  <h2>Escolas Cadastradas</h2>
+  <app-input-list-school
+  [inputListItems]="listItemStage()"
+  (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
+  (outputUpdateItemText)="updateItemText($event)"
+  (outputDeletItemText)="deletItemText($event)"
+  />
+
+  }
+</main>
+<footer>
+  <button class="btn btn-danger" (click)="deleteAllItems()">
+    Deletar todos os items
+  </button>
+</footer>
+
+}

@@ -1,0 +1,34 @@
+<header [ngClass]="{
+    'has-items' : inputListItems.length
+}">
+@if(inputListItems.length){
+    <h1>Lista de escolas</h1>
+}
+<div
+[ngClass]="{
+    'remove-margin-bottom' : inputListItems.length
+}"
+>
+    <label class="input-label-text" for="inpuValue"
+    [ngClass]="{
+        'remove-margin-bottom' : !inputListItems.length
+    }"
+    >
+        <input
+         type="text"
+         placeholder="Adione uma escola"
+         id="inpuValue"
+         autofocus
+         (keyup.enter)="focusAndAddItem(inputText.value)"
+         #inputText
+
+        >
+        <button
+          class="btn btn-primary-circle"
+          title="Adionar novo item"
+          (click)="focusAndAddItem(inputText.value)"
+          >
+</button>
+    </label>
+</div>
+</header>

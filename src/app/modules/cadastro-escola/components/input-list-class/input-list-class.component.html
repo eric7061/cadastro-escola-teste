@@ -1,0 +1,15 @@
+
+@for(item of inputListItems; track item ){
+  <label class="input-label-text" [for]="item.id">
+
+   <input type="text"
+   #inpuValue
+    [id]="item.id"
+    [value]="item.value"
+     placeholder="Adicone um valor"
+     autofocus
+     readonly
+     >
+
+  </label>
+}
