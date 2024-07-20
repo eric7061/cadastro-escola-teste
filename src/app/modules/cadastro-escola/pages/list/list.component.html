@@ -1,4 +1,5 @@
-@if(!getListItems().length){
+
+@if(!(escolas$ | async)?.length){
 
 <div class="container">
   <img
@@ -14,7 +15,7 @@
   </button>
   }@else{
   <app-input-add-item
-    [inputListItems]="getListItems()"
+    [inputListItems]="escolas$"
     (outpuListAddItem)="getInputAndAddItem($event)"
   />
 
@@ -22,16 +23,15 @@
 </div>
 }@else{
 <app-input-add-item
-  [inputListItems]="getListItems()"
+  [inputListItems]="escolas$"
   (outpuListAddItem)="getInputAndAddItem($event)"
 />
 <main class="container">
-  @if(listItemStage().length){
+  @if((escolas$ | async)){
 
   <h2>Escolas Cadastradas</h2>
   <app-input-list-school
-  [inputListItems]="listItemStage()"
-  (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
+  [inputListItems]="escolas$"
   (outputUpdateItemText)="updateItemText($event)"
   (outputDeletItemText)="deletItemText($event)"
   />
@@ -39,9 +39,7 @@
   }
 </main>
 <footer>
-  <button class="btn btn-danger" (click)="deleteAllItems()">
-    Deletar todos os items
-  </button>
+
 </footer>
 
 }

@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, output, ViewChild, viewChild } from '@angular/core';
 import { IListItems } from '../../interface/IListItems.interface';
-import { JsonPipe, NgClass } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgClass } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-input-add-item',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, AsyncPipe],
   templateUrl: './input-add-school.component.html',
   styleUrl: './input-add-school.component.scss'
 })
@@ -16,7 +17,7 @@ export class InputAddItemComponent {
 
   @ViewChild("inputText") public inputText!: ElementRef;
 
-  @Input({required: true}) public inputListItems : IListItems[] = [];
+  @Input({required: true}) public inputListItems! : Observable<IListItems[]>;
 
   @Output() public outpuListAddItem = new EventEmitter<IListItems>();
 
@@ -30,7 +31,7 @@ export class InputAddItemComponent {
        const timeStamp = currentDate.getTime();
        const id = `${timeStamp}`
        this.outpuListAddItem.emit({
-        id,
+        id:id,
         checked:false,
         value
        })

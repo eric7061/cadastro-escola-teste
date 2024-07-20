@@ -1,5 +1,5 @@
 
-@for(item of inputListItems; track item ){
+@for(item of (inputListItems | async); track item ){
   <label class="input-label-text" [for]="item.id">
 
    <input type="text"
@@ -9,7 +9,14 @@
      placeholder="Adicone um valor"
      autofocus
      readonly
+
+     >
+     <button
+     class="btn btn-danger-circle"
+     title="Delete este item"
+     (click)="deleteItemText(item.id)"
      >
 
+     </button>
   </label>
 }

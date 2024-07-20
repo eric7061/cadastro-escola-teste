@@ -1,17 +1,17 @@
 <header [ngClass]="{
-    'has-items' : inputListItems.length
+    'has-items' : (inputListItems | async)?.length
 }">
-@if(inputListItems.length){
+@if((inputListItems | async)?.length){
     <h1>Lista de escolas</h1>
 }
 <div
 [ngClass]="{
-    'remove-margin-bottom' : inputListItems.length
+    'remove-margin-bottom' : (inputListItems | async)?.length
 }"
 >
     <label class="input-label-text" for="inpuValue"
     [ngClass]="{
-        'remove-margin-bottom' : !inputListItems.length
+        'remove-margin-bottom' : !(inputListItems | async)?.length
     }"
     >
         <input

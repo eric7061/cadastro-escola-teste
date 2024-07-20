@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IListItems } from '../../interface/IListItems.interface';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-input-list-school',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './input-list-school.component.html',
   styleUrl: './input-list-school.component.scss'
 })
@@ -17,13 +19,8 @@ constructor(
 
 }
 
-  @Input({required: true}) public inputListItems : IListItems[] = [];
-
-  @Output() public outputUpdateItemCheckbox = new EventEmitter<{id:string, checked:boolean}>();
-
-  public updateItemCheckbox(id:string,checked:boolean){
-     return this.outputUpdateItemCheckbox.emit({id,checked});
-  }
+  @Input({ required: true })
+  public inputListItems!: Observable<IListItems[]>;
 
 
   @Output() public outputUpdateItemText = new EventEmitter<{id:string, value:string}>();

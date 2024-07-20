@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, 
 import { NgClass } from '@angular/common';
 import { IListClass } from '../../interface/IListClass.interface';
 import { ElocalStorage } from '../../enum/ELocalStorage.enum';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-input-add-class',
@@ -25,7 +26,8 @@ export class InputAddClassComponent {
 
   @ViewChild("inputText") public inputText!: ElementRef;
 
-  @Input({required: true}) public inputListItems : IListClass[] = [];
+  @Input({ required: true })
+  public inputListItems!: Observable<IListClass[]>;
 
   @Input({required: true}) public idSchool : string = "";
 

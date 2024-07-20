@@ -1,0 +1,28 @@
+{
+  "schools": [
+    {
+      "id": "1721462521338",
+      "checked": false,
+      "value": "ESCOLA"
+    },
+    {
+      "id": "1721462607615",
+      "checked": false,
+      "value": "OI"
+    }
+  ],
+  "class": [
+    {
+      "id": "1721462533302",
+      "idSchool": "1721462521338",
+      "checked": false,
+      "value": "TURMA"
+    },
+    {
+      "id": "1721462615711",
+      "idSchool": "1721462607615",
+      "checked": false,
+      "value": "Teste"
+    }
+  ]
+}
